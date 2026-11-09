@@ -2,6 +2,9 @@
 # AlagaSave - arquivos de integracao Wokwi + Supabase
 AlagaSave - Sistema Inteligente de Monitoramento de Enchentes
 
+## link do wokwi 
+https://wokwi.com/projects/480248697531012097
+
 ## Sobre o projeto
 
 O AlagaSave é um protótipo de monitoramento de enchentes desenvolvido com o objetivo de acompanhar o nível da água e simular a intensidade da chuva, identificando possíveis situações de risco.
