@@ -1,37 +1,270 @@
 
 # AlagaSave - arquivos de integracao Wokwi + Supabase
+AlagaSave - Sistema Inteligente de Monitoramento de Enchentes
 
-## O que esta configurado
-- ESP32 conecta ao Wi-Fi `Wokwi-GUEST`.
-- HC-SR04 nos GPIOs 5 (TRIG) e 23 (ECHO).
-- Potenciometro no GPIO 34 para simular chuva.
-- Envia uma linha para `public.medicoes` a cada 5 segundos.
-- Site consulta o Supabase a cada 5 segundos e mostra indicadores, grafico e tabela.
+## Sobre o projeto
 
-## 1. Wokwi
-1. Abra seu projeto Wokwi.
-2. Substitua o conteudo de `sketch.ino` pelo arquivo deste pacote.
-3. Substitua o conteudo de `diagram.json` pelo arquivo deste pacote (se quiser usar a montagem sugerida).
-4. Salve e inicie a simulacao.
-5. Abra o Serial Monitor em 115200 baud.
+O AlagaSave é um protótipo de monitoramento de enchentes desenvolvido com o objetivo de acompanhar o nível da água e simular a intensidade da chuva, identificando possíveis situações de risco.
 
-Nao precisa instalar ArduinoJson: o firmware monta o JSON diretamente e usa bibliotecas do core ESP32.
+O sistema utiliza um ESP32 conectado a sensores para coletar informações, processar os dados e enviá-los para um banco de dados na nuvem. Essas informações são apresentadas em um site que permite acompanhar as medições e visualizar o histórico.
 
-## 2. Supabase
-O arquivo `supabase/schema.sql` documenta a estrutura esperada. Como voce ja executou o SQL e a tabela apareceu, nao execute novamente sem necessidade.
-A URL e a publishable key estao preenchidas nos arquivos para o projeto informado. A publishable key e publica; nunca coloque uma chave `service_role` ou `secret` no navegador, Wokwi ou GitHub.
+## Objetivo
 
-## 3. Site
-1. Abra a pasta `site`.
-2. Para testar localmente, abra `index.html` no navegador. Se o navegador bloquear recursos, use a extensao Live Server do VS Code.
-3. O site deve mostrar "Conectado ao Supabase". Os indicadores aparecem depois que a primeira medicao for inserida.
+Desenvolver uma solução tecnológica capaz de:
 
-## 4. Respostas comuns do Serial Monitor
-- HTTP 201 ou 204: insercao aceita.
-- HTTP 401/403: chave ou politica RLS/permissao.
-- HTTP 404: confira URL, endpoint ou nome da tabela.
-- HTTP negativo: problema de rede/conexao.
+Monitorar o nível da água.
 
-## 5. Limites e seguranca
-Este e um prototipo academico. As politicas de exemplo permitem leitura e insercao publica para facilitar a demonstracao. Para publicar de verdade, restrinja quem pode inserir e ler, valide os dados e use autenticacao ou uma API intermediaria.
-O potenciometro e apenas uma simulacao de chuva. O sensor ultrassonico e a altura de referencia tambem precisam ser calibrados para o ambiente real. Em hardware real, o pino ECHO do HC-SR04 pode fornecer 5 V; use divisor de tensao/level shifter antes do GPIO do ESP32.
+Simular a intensidade da chuva.
+
+Identificar situações de risco de alagamento.
+
+Armazenar medições em um banco de dados.
+
+Apresentar informações em um painel atualizado automaticamente.
+
+Facilitar o acompanhamento das condições ambientais.
+
+## Tecnologias utilizadas
+
+ESP32: processamento e comunicação dos dados.
+
+HC-SR04: sensor ultrassônico para medir a distância até a superfície da água.
+
+Potenciômetro: simulação da intensidade da chuva.
+
+Wokwi: ambiente de simulação do circuito eletrônico.
+
+Arduino C++: programação do ESP32.
+
+Supabase: armazenamento dos dados na nuvem.
+
+HTML: estrutura do site.
+
+CSS: estilização e organização visual.
+
+JavaScript: comunicação com o banco de dados e atualização do painel.
+
+## Componentes e conexões
+
+Componente
+
+Pino ESP32
+
+HC-SR04 TRIG
+
+GPIO 5
+
+HC-SR04 ECHO
+
+GPIO 23
+
+HC-SR04 VCC
+
+VIN
+
+HC-SR04 GND
+
+GND
+
+Potenciômetro SIG
+
+GPIO 34
+
+Potenciômetro VCC
+
+3V3
+
+Potenciômetro GND
+
+GND
+
+## Funcionamento do sistema
+
+O funcionamento do AlagaSave acontece em cinco etapas:
+
+Coleta de dados: o sensor HC-SR04 mede a distância entre o sensor e a superfície da água.
+
+Simulação de chuva: o potenciômetro representa diferentes intensidades de chuva.
+
+Processamento: o ESP32 calcula o nível estimado da água e classifica a situação.
+
+Armazenamento: os dados são enviados ao Supabase por meio de requisições HTTP.
+
+Visualização: o site consulta o banco de dados e apresenta as informações em um painel.
+
+O envio e a atualização das informações acontecem em intervalos de aproximadamente 5 segundos.
+
+Classificação dos níveis de risco
+
+O sistema utiliza quatro classificações para identificar o nível da água:
+
+Nível da água
+
+Classificação
+
+Abaixo de 30%
+
+NORMAL
+
+De 30% até abaixo de 70%
+
+ATENÇÃO
+
+De 70% até abaixo de 90%
+
+ALERTA
+
+90% ou mais
+
+CRÍTICO
+
+Classificação da chuva simulada
+
+Percentual
+
+Classificação
+
+Abaixo de 20%
+
+SEM CHUVA
+
+De 20% até abaixo de 60%
+
+CHUVA MODERADA
+
+60% ou mais
+
+CHUVA FORTE
+
+## Painel de monitoramento
+
+O site do AlagaSave apresenta as seguintes informações:
+
+Nível da água em centímetros e porcentagem.
+
+Intensidade da chuva simulada.
+
+Distância identificada pelo sensor ultrassônico.
+
+Classificação automática do risco.
+
+Gráfico com o histórico das medições.
+
+Tabela com os registros recentes.
+
+O painel consulta o Supabase automaticamente a cada 5 segundos.
+
+## Banco de dados
+
+O projeto utiliza o Supabase para armazenar as medições coletadas pelo ESP32.
+
+A tabela principal utilizada é medicoes, contendo os seguintes campos:
+
+Campo
+
+Descrição
+
+id
+
+Identificador da medição
+
+dispositivo
+
+Identificação do dispositivo
+
+distancia_cm
+
+Distância medida pelo sensor
+
+nivel_agua_cm
+
+Nível estimado da água em centímetros
+
+nivel_agua_percentual
+
+Nível da água em porcentagem
+
+chuva_adc
+
+Valor analógico do potenciômetro
+
+chuva_percentual
+
+Intensidade simulada da chuva
+
+situacao_chuva
+
+Classificação da chuva
+
+status_nivel
+
+Classificação do risco
+
+data_hora
+
+Data e horário do registro
+
+
+## Estrutura do projeto
+
+AlagaSave/
+│
+├── sketch.ino
+├── diagram.json
+├── libraries.txt
+├── README.md
+│
+├── supabase/
+│   └── schema.sql
+│
+└── site/
+    ├── index.html
+    ├── style.css
+    ├── config.js
+    └── app.js
+
+## Segurança
+
+O projeto utiliza uma chave pública (publishable key) para realizar a comunicação com o Supabase.
+
+As políticas de segurança RLS devem estar habilitadas e configuradas corretamente.
+
+As permissões públicas utilizadas neste protótipo são destinadas à demonstração acadêmica. Para uma aplicação em produção, é necessário restringir as operações de leitura e inserção, validar os dados recebidos e implementar mecanismos adicionais de autenticação e segurança.
+
+Nunca disponibilize chaves secretas ou service_role em repositórios públicos.
+
+## Limitações do projeto
+
+O potenciômetro representa uma simulação de chuva, não uma medição meteorológica real.
+
+A altura de referência de 100 cm é utilizada como parâmetro demonstrativo.
+
+O sensor ultrassônico pode apresentar variações nas medições.
+
+O protótipo possui finalidade acadêmica e não substitui sistemas profissionais de monitoramento e alerta de enchentes.
+
+Melhorias futuras
+
+Integração com sensores reais de chuva.
+
+Monitoramento de diferentes pontos de uma região.
+
+Envio de notificações em situações críticas.
+
+Integração com mapas de localização.
+
+Armazenamento de históricos de longo prazo.
+
+Aplicação de inteligência artificial para previsão de alagamentos.
+
+Aprimoramento da segurança e autenticação dos usuários.
+
+Informações acadêmicas
+
+Projeto: AlagaSave - Sistema Inteligente de Monitoramento de Enchentes.
+
+Instituição: FIAP.
+
+Curso: Ciência da Computação.
+
+Integrantes: [Inserir nomes dos integrantes].
