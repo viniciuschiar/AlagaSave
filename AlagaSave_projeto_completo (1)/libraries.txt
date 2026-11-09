@@ -1,1 +1,0 @@
-# Nenhuma biblioteca externa necessaria. WiFi, HTTPClient e WiFiClientSecure fazem parte do core ESP32.
