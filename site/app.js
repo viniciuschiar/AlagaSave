@@ -6,10 +6,12 @@ function setConnection(ok, message) {
   document.getElementById("dot").className = "dot " + (ok ? "ok" : "bad");
   document.getElementById("connection").textContent = message;
 }
+
 function fmt(value, digits=1) {
   const n = Number(value);
   return Number.isFinite(n) ? n.toFixed(digits) : "--";
 }
+
 function renderChart(data) {
   const ordered = [...data].reverse();
   const labels = ordered.map(x => new Date(x.data_hora).toLocaleTimeString("pt-BR"));
@@ -20,18 +22,22 @@ function renderChart(data) {
     chart.update();
     return;
   }
+
   chart = new Chart(document.getElementById("chart"), {
     type: "line",
     data: { labels, datasets: [{ label: "Nivel da agua (%)", data: values, borderColor: "#1685a5", backgroundColor: "rgba(22,133,165,.12)", fill: true, tension: .3 }] },
     options: { responsive: true, maintainAspectRatio: true, scales: { y: { min: 0, max: 100, title: { display: true, text: "%" } } }, plugins: { legend: { display: false } } }
   });
 }
+
 function renderRows(data) {
   const tbody = document.getElementById("rows");
   if (!data.length) {
     tbody.innerHTML = '<tr><td colspan="4">Nenhuma medicao encontrada. Inicie a simulacao no Wokwi.</td></tr>';
     return;
   }
+
+  
   tbody.innerHTML = data.slice(0, 12).map(x => `
     <tr>
       <td>${new Date(x.data_hora).toLocaleString("pt-BR")}</td>
