@@ -1,43 +1,246 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ffffff"><meta name="description" content="AlagaSave — monitoramento experimental de uma estação piloto">
-<title>AlagaSave | Estação 01</title>
-<link rel="stylesheet" href="style.css">
-<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script defer src="config.js"></script><script defer src="app.js"></script>
-</head>
-<body>
-<div class="app-shell">
-<header class="topbar">
-  <a href="index.html" class="brand" aria-label="AlagaSave, início"><span class="brand-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3M2 17c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/></svg></span><span><b>Alaga<span>Save</span></b><small>SMART CITY · PROJETO PILOTO</small></span></a>
-  <span class="header-pill"><span class="live-dot" id="header-dot"></span><span id="header-state">Carregando</span></span>
-</header>
-<main class="content">
-  <div class="intro"><span class="kicker">PAINEL DA ESTAÇÃO</span><div class="intro-top"><div><h1>Estação 01<span class="title-dot">.</span></h1><p><svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg> Passagem urbana · localização experimental</p></div><span class="pilot-tag">Estação piloto</span></div></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="AlagaSave — monitoramento experimental de uma estação piloto"
+    />
+    <title>AlagaSave | Estação 01</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="config.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a href="index.html" class="brand" aria-label="AlagaSave, início"
+          ><span class="brand-icon"
+            ><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M2 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3M2 17c3 0 3-3 6-3s3 3 6 3 3-3 6-3"
+              /></svg></span
+          ><span
+            ><b>Alaga<span>Save</span></b
+            ><small>MONITORAMENTO INTELIGENTE DE ALAGAMENTOS</small></span
+          ></a
+        >
+        <span class="header-pill"
+          ><span class="live-dot" id="header-dot"></span
+          ><span id="header-state">Carregando</span></span
+        >
+      </header>
+      <main class="content">
+        <div class="intro">
+          <span class="kicker">PAINEL DA ESTAÇÃO</span>
+          <div class="intro-top">
+            <div>
+              <h1>Estação 01<span class="title-dot">.</span></h1>
+              <p>
+                <svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+                  <circle cx="12" cy="10" r="2.5" />
+                </svg>
+                Passagem urbana · localização experimental
+              </p>
+            </div>
+            <span class="pilot-tag">Estação piloto</span>
+          </div>
+        </div>
 
-  <section class="overview" id="overview" data-state="unknown" aria-label="Resumo da estação">
-    <div class="overview-top"><span class="overline"><span class="tiny-dot"></span> ÚLTIMO REGISTRO DA ESTAÇÃO</span><span class="overview-badge" id="state-badge">AGUARDANDO</span></div>
-    <div class="overview-body">
-      <div class="overview-info"><h2 id="state-heading">Aguardando medição</h2><p id="state-description">Carregando dados da Estação 01.</p><div class="hero-stat"><span>ÁGUA ACUMULADA</span><strong id="hero-percent">--<small>%</small></strong><span id="hero-centimeters">-- cm registrados</span></div></div>
-      <div class="donut" id="donut" role="img" aria-label="Nível da água indisponível"><svg viewBox="0 0 150 150" aria-hidden="true"><circle class="donut-track" cx="75" cy="75" r="59"/><circle class="donut-progress" id="donut-progress" cx="75" cy="75" r="59"/></svg><div class="donut-inner"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12c2.5 0 2.5-2.5 5-2.5S9.5 12 12 12s2.5-2.5 5-2.5S19.5 12 22 12M2 18c2.5 0 2.5-2.5 5-2.5S9.5 18 12 18s2.5-2.5 5-2.5S19.5 18 22 18"/></svg><span>NÍVEL</span></div></div>
+        <section
+          class="overview"
+          id="overview"
+          data-state="unknown"
+          aria-label="Resumo da estação"
+        >
+          <div class="overview-top">
+            <span class="overline"
+              ><span class="tiny-dot"></span> ÚLTIMO REGISTRO DA ESTAÇÃO</span
+            ><span class="overview-badge" id="state-badge">AGUARDANDO</span>
+          </div>
+          <div class="overview-body">
+            <div class="overview-info">
+              <h2 id="state-heading">Aguardando medição</h2>
+              <p id="state-description">Carregando dados da Estação 01.</p>
+              <div class="hero-stat">
+                <span>ÁGUA ACUMULADA</span
+                ><strong id="hero-percent">--<small>%</small></strong
+                ><span id="hero-centimeters">-- cm registrados</span>
+              </div>
+            </div>
+            <div
+              class="donut"
+              id="donut"
+              role="img"
+              aria-label="Nível da água indisponível"
+            >
+              <svg viewBox="0 0 150 150" aria-hidden="true">
+                <circle class="donut-track" cx="75" cy="75" r="59" />
+                <circle
+                  class="donut-progress"
+                  id="donut-progress"
+                  cx="75"
+                  cy="75"
+                  r="59"
+                />
+              </svg>
+              <div class="donut-inner">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M2 12c2.5 0 2.5-2.5 5-2.5S9.5 12 12 12s2.5-2.5 5-2.5S19.5 12 22 12M2 18c2.5 0 2.5-2.5 5-2.5S9.5 18 12 18s2.5-2.5 5-2.5S19.5 18 22 18"
+                  /></svg
+                ><span>NÍVEL</span>
+              </div>
+            </div>
+          </div>
+          <div class="overview-footer">
+            <span
+              ><svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" /></svg
+              ><span id="last-time">Aguardando medição</span></span
+            ><span class="sim-label">DADOS SIMULADOS</span>
+          </div>
+        </section>
+
+        <div class="section-heading">
+          <div>
+            <span class="kicker">DADOS DA ESTAÇÃO 01</span>
+            <h2>Medições dos sensores</h2>
+          </div>
+          <span class="section-aside">A cada 5 s</span>
+        </div>
+        <section class="sensor-grid" aria-label="Medições da Estação 01">
+          <article class="sensor-card">
+            <div class="sensor-top">
+              <span class="icon-tile blue"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M2 12c2.5 0 2.5-2.5 5-2.5S9.5 12 12 12s2.5-2.5 5-2.5S19.5 12 22 12M2 18c2.5 0 2.5-2.5 5-2.5S9.5 18 12 18s2.5-2.5 5-2.5S19.5 18 22 18"
+                  /></svg></span
+              ><span class="sensor-index">01</span>
+            </div>
+            <p>Nível da água</p>
+            <strong id="water-cm">-- cm</strong
+            ><small id="water-pct">--% da escala simulada</small>
+            <div class="bar"><span id="water-bar"></span></div>
+          </article>
+          <article class="sensor-card">
+            <div class="sensor-top">
+              <span class="icon-tile violet"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M20 16a4 4 0 0 0-3.8-5.3A6.5 6.5 0 0 0 4 12a4 4 0 0 0 1 8h11"
+                  />
+                  <path d="m8 16-1 3m6-3-1 3m6-3-1 3" /></svg></span
+              ><span class="sensor-index">02</span>
+            </div>
+            <p>Chuva simulada</p>
+            <strong id="rain-pct">--%</strong
+            ><small id="rain-type">Aguardando</small>
+            <div class="bar violet-bar"><span id="rain-bar"></span></div>
+          </article>
+          <article class="sensor-card">
+            <div class="sensor-top">
+              <span class="icon-tile orange"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="2" />
+                  <path
+                    d="M16.2 7.8a6 6 0 0 1 0 8.4m-8.4 0a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"
+                  /></svg></span
+              ><span class="sensor-index">03</span>
+            </div>
+            <p>Distância do sensor</p>
+            <strong id="distance">-- cm</strong
+            ><small>Sensor ultrassônico</small>
+          </article>
+        </section>
+
+        <section class="history-card">
+          <div class="history-top">
+            <div>
+              <span class="kicker">EVOLUÇÃO · ESTAÇÃO 01</span>
+              <h2>Histórico da água</h2>
+              <p>Últimas 50 medições registradas</p>
+            </div>
+            <span class="chart-pill"
+              ><span class="chart-dot"></span> Nível (%)</span
+            >
+          </div>
+          <div class="chart-wrap">
+            <canvas
+              id="chart"
+              role="img"
+              aria-label="Gráfico histórico do nível da água"
+            ></canvas>
+            <p class="chart-placeholder" id="chart-placeholder">
+              Aguardando dados para exibir o gráfico.
+            </p>
+          </div>
+        </section>
+
+        <section class="measurements">
+          <div class="section-heading smaller">
+            <div>
+              <span class="kicker">TRANSPARÊNCIA</span>
+              <h2>Últimos registros</h2>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Horário</th>
+                  <th>Água</th>
+                  <th>Chuva</th>
+                  <th>Risco</th>
+                </tr>
+              </thead>
+              <tbody id="rows">
+                <tr>
+                  <td colspan="4">Aguardando medições...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <p class="disclaimer">
+          <svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 11v6m0-10h.01" />
+          </svg>
+          Protótipo acadêmico. Chuva simulada em %, não em mm/h. Os dados não
+          confirmam a segurança da via.
+        </p>
+      </main>
+      <nav class="bottom-nav" aria-label="Navegação principal">
+        <a class="nav-link active" aria-current="page" href="index.html"
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 10.5 12 3l9 7.5V21h-7v-7h-4v7H3z" /></svg
+          ><span>Estação</span></a
+        ><a class="nav-link" href="mapa.html"
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3zM9 3v15M15 6v15" /></svg
+          ><span>Mapa</span></a
+        ><a class="nav-link" href="assistente.html"
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M20 11.5a8 8 0 0 1-8 8c-1.5 0-2.8-.3-4-1L3 21l1.5-4A8 8 0 1 1 20 11.5Z"
+            /></svg
+          ><span>Assistente</span></a
+        >
+      </nav>
     </div>
-    <div class="overview-footer"><span><svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="last-time">Aguardando medição</span></span><span class="sim-label">DADOS SIMULADOS</span></div>
-  </section>
-
-  <div class="section-heading"><div><span class="kicker">DADOS DA ESTAÇÃO 01</span><h2>Medições dos sensores</h2></div><span class="section-aside">A cada 5 s</span></div>
-  <section class="sensor-grid" aria-label="Medições da Estação 01">
-    <article class="sensor-card"><div class="sensor-top"><span class="icon-tile blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12c2.5 0 2.5-2.5 5-2.5S9.5 12 12 12s2.5-2.5 5-2.5S19.5 12 22 12M2 18c2.5 0 2.5-2.5 5-2.5S9.5 18 12 18s2.5-2.5 5-2.5S19.5 18 22 18"/></svg></span><span class="sensor-index">01</span></div><p>Nível da água</p><strong id="water-cm">-- cm</strong><small id="water-pct">--% da escala simulada</small><div class="bar"><span id="water-bar"></span></div></article>
-    <article class="sensor-card"><div class="sensor-top"><span class="icon-tile violet"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 16a4 4 0 0 0-3.8-5.3A6.5 6.5 0 0 0 4 12a4 4 0 0 0 1 8h11"/><path d="m8 16-1 3m6-3-1 3m6-3-1 3"/></svg></span><span class="sensor-index">02</span></div><p>Chuva simulada</p><strong id="rain-pct">--%</strong><small id="rain-type">Aguardando</small><div class="bar violet-bar"><span id="rain-bar"></span></div></article>
-    <article class="sensor-card"><div class="sensor-top"><span class="icon-tile orange"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4m-8.4 0a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg></span><span class="sensor-index">03</span></div><p>Distância do sensor</p><strong id="distance">-- cm</strong><small>Sensor ultrassônico</small></article>
-  </section>
-
-  <section class="history-card"><div class="history-top"><div><span class="kicker">EVOLUÇÃO · ESTAÇÃO 01</span><h2>Histórico da água</h2><p>Últimas 50 medições registradas</p></div><span class="chart-pill"><span class="chart-dot"></span> Nível (%)</span></div><div class="chart-wrap"><canvas id="chart" role="img" aria-label="Gráfico histórico do nível da água"></canvas><p class="chart-placeholder" id="chart-placeholder">Aguardando dados para exibir o gráfico.</p></div></section>
-
-  <section class="measurements"><div class="section-heading smaller"><div><span class="kicker">TRANSPARÊNCIA</span><h2>Últimos registros</h2></div></div><div class="table-scroll"><table><thead><tr><th>Horário</th><th>Água</th><th>Chuva</th><th>Risco</th></tr></thead><tbody id="rows"><tr><td colspan="4">Aguardando medições...</td></tr></tbody></table></div></section>
-  <p class="disclaimer"><svg class="inline-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 11v6m0-10h.01"/></svg> Protótipo acadêmico. Chuva simulada em %, não em mm/h. Os dados não confirmam a segurança da via.</p>
-</main>
-<nav class="bottom-nav" aria-label="Navegação principal"><a class="nav-link active" aria-current="page" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21h-7v-7h-4v7H3z"/></svg><span>Estação</span></a><a class="nav-link" href="mapa.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3zM9 3v15M15 6v15"/></svg><span>Mapa</span></a><a class="nav-link" href="assistente.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8c-1.5 0-2.8-.3-4-1L3 21l1.5-4A8 8 0 1 1 20 11.5Z"/></svg><span>Assistente</span></a></nav>
-</div></body></html>
+  </body>
+</html>
