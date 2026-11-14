@@ -1,4 +1,12 @@
-"""Audita o CSV do AlagaSave e cria exemplos com horizonte de 30 minutos."""
+"""Audita o CSV do AlagaSave e cria exemplos com horizonte de 30 minutos.
+
+para rodar execute no terminal:
+
+" python -m ia_agent.tratar_dados .\dados_historicos.csv 
+--saida .\ia_agent\.csv\dados_tratados.csv 
+--auditoria .\ia_agent\auditoria.json "
+
+"""
 
 import argparse
 import json
@@ -10,7 +18,7 @@ import pandas as pd
 TEMPO = "data_hora"
 DISPOSITIVO = "dispositivo"
 NIVEL = "nivel_agua_cm"
-CHUVA = "chuva_percentual"
+CHUVA = "milimetragem_chuva"
 ALVO = "nivel_agua_30min_cm"
 TEMPO_ALVO = "data_hora_alvo"
 HORIZONTE = pd.Timedelta(minutes=30)

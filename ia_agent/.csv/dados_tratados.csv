@@ -1,1 +1,1 @@
-data_hora,dispositivo,nivel_agua_cm,chuva_percentual,variacao_nivel_5min_cm,variacao_nivel_15min_cm,data_hora_alvo,nivel_agua_30min_cm
+data_hora,dispositivo,nivel_agua_cm,milimetragem_chuva,variacao_nivel_5min_cm,variacao_nivel_15min_cm,data_hora_alvo,nivel_agua_30min_cm

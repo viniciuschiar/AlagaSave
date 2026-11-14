@@ -1,5 +1,11 @@
 """Valida e treina uma regressão linear múltipla para o AlagaSave."""
+'''
 
+Para rodar a aplicação execute:
+"python .\ia_agent\treinar_ia.py .\ia_agent\.csv\dados_tratados.csv"
+no terminal Python.
+
+''' 
 import argparse
 import json
 from pathlib import Path
@@ -12,7 +18,6 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import TimeSeriesSplit
 
 from tratar_dados import ALVO, COLUNAS, DISPOSITIVO, HORIZONTE, NIVEL, TEMPO, TEMPO_ALVO, VARIAVEIS
-
 
 def metricas(real, previsto):
     return {
@@ -119,7 +124,6 @@ def main():
     resultado = json.dumps(relatorio, ensure_ascii=False, indent=2, allow_nan=False)
     args.metricas.write_text(resultado + "\n", encoding="utf-8")
     print(resultado)
-
 
 if __name__ == "__main__":
     main()
