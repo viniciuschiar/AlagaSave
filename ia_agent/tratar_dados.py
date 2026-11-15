@@ -18,7 +18,7 @@ import pandas as pd
 TEMPO = "data_hora"
 DISPOSITIVO = "dispositivo"
 NIVEL = "nivel_agua_cm"
-CHUVA = "milimetragem_chuva"
+CHUVA = "porcentagem_chuva"
 ALVO = "nivel_agua_30min_cm"
 TEMPO_ALVO = "data_hora_alvo"
 HORIZONTE = pd.Timedelta(minutes=30)

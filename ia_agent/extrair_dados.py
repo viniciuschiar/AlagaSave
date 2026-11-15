@@ -28,7 +28,7 @@ tamanho_pagina = 1000
 # Percorre o db e extrai os registros
 while True:
     params = {
-        "select": "data_hora,dispositivo,nivel_agua_cm,milimetragem_chuva",
+        "select": "data_hora,dispositivo,nivel_agua_cm,porcentagem_chuva",
         "order": "data_hora.asc",
         "limit": tamanho_pagina,
         "offset": pagina * tamanho_pagina

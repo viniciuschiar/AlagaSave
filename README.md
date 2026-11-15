@@ -141,7 +141,7 @@ A tabela principal utilizada é medicoes, contendo os seguintes campos:
 | nivel_agua_cm         | Nível estimado da água em centímetros |
 | nivel_agua_percentual | Nível da água em porcentagem          |
 | chuva_adc             | Valor analógico do potenciômetro      |
-| chuva_percentual      | Intensidade simulada da chuva         |
+| milimetragem_chuva    | Intensidade simulada da chuva         |
 | situacao_chuva        | Classificação da chuva                |
 | status_nivel          | Classificação do risco                |
 | data_hora             | Data e horário do registro            |
