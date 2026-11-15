@@ -1,0 +1,83 @@
+{
+  "horizonte_minutos": 30,
+  "validacao_temporal": [
+    {
+      "linhas_treino": 111,
+      "linhas_validacao": 114,
+      "ultimo_alvo_treino_utc": "2026-11-08T09:55:00+00:00",
+      "inicio_validacao_utc": "2026-11-08T10:00:00+00:00",
+      "fim_validacao_utc": "2026-11-08T19:25:00+00:00",
+      "regressao": {
+        "mae_cm": 0.8770625959835261,
+        "rmse_cm": 1.042411945705984,
+        "r2": 0.9974696756152058
+      },
+      "persistencia": {
+        "mae_cm": 11.493333333333336,
+        "rmse_cm": 12.87930612710908,
+        "r2": 0.6137376542063873
+      }
+    },
+    {
+      "linhas_treino": 225,
+      "linhas_validacao": 114,
+      "ultimo_alvo_treino_utc": "2026-11-08T19:25:00+00:00",
+      "inicio_validacao_utc": "2026-11-08T19:30:00+00:00",
+      "fim_validacao_utc": "2026-11-15T07:40:00+00:00",
+      "regressao": {
+        "mae_cm": 0.9147862120652512,
+        "rmse_cm": 1.1371095099799184,
+        "r2": 0.9967575378433231
+      },
+      "persistencia": {
+        "mae_cm": 10.040614035087719,
+        "rmse_cm": 11.81036227291711,
+        "r2": 0.6502185517647068
+      }
+    },
+    {
+      "linhas_treino": 339,
+      "linhas_validacao": 114,
+      "ultimo_alvo_treino_utc": "2026-11-15T07:40:00+00:00",
+      "inicio_validacao_utc": "2026-11-15T07:45:00+00:00",
+      "fim_validacao_utc": "2026-11-15T17:10:00+00:00",
+      "regressao": {
+        "mae_cm": 0.9081349989920251,
+        "rmse_cm": 1.0717769943649182,
+        "r2": 0.9974398607903684
+      },
+      "persistencia": {
+        "mae_cm": 10.249035087719298,
+        "rmse_cm": 11.679785618977052,
+        "r2": 0.6959643833936147
+      }
+    }
+  ],
+  "dobras_previstas": 3,
+  "teste_final": {
+    "linhas_treino": 459,
+    "linhas_validacao": 117,
+    "ultimo_alvo_treino_utc": "2026-11-15T17:40:00+00:00",
+    "inicio_validacao_utc": "2026-11-15T17:45:00+00:00",
+    "fim_validacao_utc": "2026-11-16T03:25:00+00:00",
+    "regressao": {
+      "mae_cm": 0.8489001091163959,
+      "rmse_cm": 1.0265000827709465,
+      "r2": 0.9977501657012853
+    },
+    "persistencia": {
+      "mae_cm": 11.008119658119657,
+      "rmse_cm": 12.589097474151005,
+      "r2": 0.661606705786534
+    }
+  },
+  "linhas_excluidas_no_corte_final": 6,
+  "posto_da_matriz": 4,
+  "coeficientes": {
+    "nivel_agua_cm": -0.2617842398170415,
+    "porcentagem_chuva": 1.2574067664093627,
+    "variacao_nivel_5min_cm": 4.223197260223142,
+    "variacao_nivel_15min_cm": -2.334974892161947
+  },
+  "intercepto_cm": 8.237742113410327
+}

@@ -1,41 +1,41 @@
 {
-  "linhas_brutas": 39,
+  "linhas_brutas": 900,
   "colunas": [
     "data_hora",
     "dispositivo",
     "nivel_agua_cm",
-    "milimetragem_chuva"
+    "porcentagem_chuva"
   ],
   "ausentes_ou_invalidos": {
     "data_hora": 0,
     "dispositivo": 0,
     "nivel_agua_cm": 0,
-    "milimetragem_chuva": 0
+    "porcentagem_chuva": 0
   },
   "datas_sem_offset": 0,
   "nivel_negativo": 0,
   "chuva_fora_0_a_100": 0,
-  "duplicatas_identicas_validas": 0,
+  "duplicatas_identicas_validas": 300,
   "linhas_com_horario_conflitante": 0,
-  "linhas_validas": 39,
+  "linhas_validas": 600,
   "dispositivos": {
     "ESP32-AlagaSave": {
-      "linhas_validas": 39,
-      "inicio_utc": "2026-11-09T22:13:50.835265+00:00",
-      "fim_utc": "2026-11-12T01:15:28.583099+00:00",
-      "duracao_horas": 51.027152176111116,
-      "intervalo_mediano_segundos": 8.3322255,
-      "maior_intervalo_segundos": 114713.532323,
-      "janelas_observadas": 7,
-      "janelas_vazias": 607,
-      "nivel_min_cm": 0.0,
-      "nivel_max_cm": 98.01,
-      "chuva_min_percentual": 11.43,
-      "chuva_max_percentual": 98.53,
-      "pares_30min": 0,
-      "exemplos_com_historico_e_alvo": 0
+      "linhas_validas": 600,
+      "inicio_utc": "2026-11-08T00:00:00+00:00",
+      "fim_utc": "2026-11-16T03:55:00+00:00",
+      "duracao_horas": 195.91666666666666,
+      "intervalo_mediano_segundos": 300.0,
+      "maior_intervalo_segundos": 525900.0,
+      "janelas_observadas": 600,
+      "janelas_vazias": 1752,
+      "nivel_min_cm": 11.31,
+      "nivel_max_cm": 74.77,
+      "chuva_min_percentual": 0.0,
+      "chuva_max_percentual": 71.16,
+      "pares_30min": 588,
+      "exemplos_com_historico_e_alvo": 582
     }
   },
-  "exemplos_finais": 0,
+  "exemplos_finais": 582,
   "fuso_para_datas_sem_offset": "UTC"
 }

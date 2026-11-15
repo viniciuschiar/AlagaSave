@@ -24,11 +24,12 @@ headers = {
 registros = []
 pagina = 0
 tamanho_pagina = 1000
+colunas = ("data_hora", "dispositivo", "nivel_agua_cm", "porcentagem_chuva")
 
 # Percorre o db e extrai os registros
 while True:
     params = {
-        "select": "data_hora,dispositivo,nivel_agua_cm,porcentagem_chuva",
+        "select": ",".join(colunas),
         "order": "data_hora.asc",
         "limit": tamanho_pagina,
         "offset": pagina * tamanho_pagina
@@ -40,9 +41,16 @@ while True:
         params=params,
         timeout=30
     )
+    if not resposta.ok:
+        print(f"Supabase HTTP {resposta.status_code}: {resposta.text}")
     resposta.raise_for_status()
 
     dados = resposta.json()
+    if not isinstance(dados, list) or any(
+        not isinstance(registro, dict) or not all(coluna in registro for coluna in colunas)
+        for registro in dados
+    ):
+        raise ValueError(f"Resposta inesperada do Supabase. Campos esperados: {', '.join(colunas)}.")
     registros.extend(dados)
 
     if len(dados) < tamanho_pagina:
